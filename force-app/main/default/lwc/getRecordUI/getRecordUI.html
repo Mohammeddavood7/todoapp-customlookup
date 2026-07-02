@@ -1,0 +1,15 @@
+<template >
+    <lightning-card >
+    <!-- <div class="slds-var-m-around_small">
+    Account : <span> {getName}</span>
+              <span>{getAnnualRevenue}</span>
+    </div> -->
+ <template for:each={accountData} for:item="out">
+        <div key={out.Id} class="slds-var-m-around_small">
+             <p> {out.Name}</p>
+             <p>{out.Revenue}</p>
+        </div>
+</template>
+ </lightning-card>
+
+</template>
