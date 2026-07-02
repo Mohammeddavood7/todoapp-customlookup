@@ -1,0 +1,77 @@
+<template>
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <!--for inputs fields and reset and add task buttons-->
+            <lightning-card title="add tasks">
+                <lightning-input label="add task" name="tastfield" value={inputTask} placeholder="enter the task"
+                    onchange={dataHandler} required message-when-value-missing="must enter text to processed"
+                    class="slds-var-p-around_small ">
+                </lightning-input>
+
+                <lightning-input type="date" label="task date" placeholder="enter the tast end date" name="tastfiledate"
+                    value={inputTaskdate} onchange={dataHandler}
+                    field-level-help="if not entered any date; by default it take today's"
+                    class="slds-var-p-around_small inputTaskdateclass"></lightning-input>
+
+                <div class="slds-var-p-around_small">
+                    <lightning-button variant="brand " label="reset" onclick={resetData}
+                        class="slds-var-p-around_small">
+                    </lightning-button>
+                    <lightning-button variant="brand" label="add task" onclick={addHandler}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+
+        <div class="slds-col">
+            <!--incompleted tasks-->
+            <lightning-card title="incomplete tasks">
+
+                <div>
+                    <template for:each={completeOpenTasks} for:item="cot" for:index="index">
+                        <div key={cot.inputTaskdate} draggable=true ondragstart={dragStartHandler} data-item={index}
+                            class="slds-grid slds-wrap slds-box slds-theme_shade tastbg">
+                            <div class="slds-col slds-size_8-of-12 ">
+                                <p>{cot.inputTask}</p>
+                                <p><lightning-formatted-date-time value={cot.inputTaskdate} year="2-digit" month="short"
+                                        day="2-digit" weekday="narrow">
+                                    </lightning-formatted-date-time></p>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12">
+                                <lightning-button-icon name={index} onclick={deletedHandler} icon-name="utility:delete"
+                                    alternative-text="Delete" class="slds-m-left_xx-small"></lightning-button-icon>
+                                <lightning-button-icon name={index} onclick={completedHandler} icon-name="utility:check"
+                                    alternative-text="check" class="slds-m-left_xx-small"></lightning-button-icon>
+
+                            </div>
+                        </div>
+
+
+                    </template>
+
+
+                </div>
+
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <!--completed tasks-->
+            <lightning-card title="completed tasks">
+                <div ondragover={dragOverHandler} ondrop={allowItemHandler}>
+                    <template for:each={completedTasks} for:item="ct" for:index="index">
+                        <div class="slds-box slds-theme_shade cmptasks" key={ct.inputTaskdate}>
+                            <p>{ct.inputTask}</p>
+                            <p><lightning-formatted-date-time value={ct.inputTaskdate} year="2-digit" month="short"
+                                    day="2-digit" weekday="narrow">
+                                </lightning-formatted-date-time></p>
+
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+
+
+
+</template>

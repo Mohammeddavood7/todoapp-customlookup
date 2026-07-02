@@ -1,0 +1,18 @@
+<template>
+    <template lwc:if={isHome}>
+        <lightning-card title="Home">
+            <div class="slds-p-around_medium">
+                <lightning-button label="Create Account" onclick={handleAccount}></lightning-button>
+                <lightning-button label="Create Contact" onclick={handleContact} class="slds-m-left_small"></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template lwc:if={isAccount}>
+        <c-account-form onback={handleBack}></c-account-form>
+    </template>
+
+    <template lwc:if={isContact}>
+        <c-contact-form onback={handleBack}></c-contact-form>
+    </template>
+</template>

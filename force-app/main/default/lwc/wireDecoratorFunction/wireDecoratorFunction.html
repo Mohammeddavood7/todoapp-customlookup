@@ -1,0 +1,14 @@
+<template>
+    <template lwc:if={updateAccount}>
+       <lightning-datatable
+        data={updateAccount}
+        columns={columns}
+        key-field="Id"
+    >
+    </lightning-datatable>
+    </template>
+    <template lwc:elseif={error}>
+    <p>some thing went wrong please raise tooken to admin </p>
+    </template>
+
+</template>
