@@ -1,11 +1,11 @@
-import { LightningElement, wire } from 'lwc';
+import { api, LightningElement, wire } from 'lwc';
 import getLookup from '@salesforce/apex/customLookup.getCustomLookup'
 const DELAY = 300;
 export default class CustomLookUp extends LightningElement {
 
-    objectApiNamefield ='Account';
+   @api objectApiNamefield ='';
     searchingName = '';
-    standardIcon = '';
+   @api standardIcon = '';
     cleanTimeOutValue ;
     showOperation = false;
     selectRecord ={

@@ -5,4 +5,10 @@
     <targets>
         <target>lightning__AppPage</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning_AppPage" >
+            <property name="objectApiNamefield" type="String" label="enter object to custom lookup" required="true" />
+            <property name="standardIcon" type="String" label="enter icon name of choosen name object" required="true" />
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
