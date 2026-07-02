@@ -3,7 +3,7 @@ import getLookup from '@salesforce/apex/customLookup.getCustomLookup'
 const DELAY = 300;
 export default class CustomLookUp extends LightningElement {
 
-   @api objectApiNamefield ='';
+   @api objectApiNamefield='';
     searchingName = '';
    @api standardIcon = '';
     cleanTimeOutValue ;
